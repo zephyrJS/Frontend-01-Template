@@ -7,19 +7,19 @@
 ## String Literal Syntax（BNF）
 
 StringLiteral ::
-    " DoubleStringCharacters " 
-    ' SingleStringCharacters '
+    " DoubleStringCharacters " 带双引号字符串
+    ' SingleStringCharacters ' 带单引号字符串
 
 DoubleStringCharacters ::
-    DoubleStringCharacter DoubleStringCharacters
+    DoubleStringCharacter DoubleStringCharacters 双引号内字符串
 
 SingleStringCharacters ::
-    SingleStringCharacter SingleStringCharacters
+    SingleStringCharacter SingleStringCharacters 单引号内字符串
 
 DoubleStringCharacter ::
-    SourceCharacter but not one of " or \ or LineTerminator 
-    <LS>
-    <PS>
+    SourceCharacter but not one of " or \ or LineTerminator  不包含 " | \ | 换行符的 unicode 字符集 
+    <LS>    U+2028
+    <PS>    U+2029
     \ EscapeSequence
     LineContinuation
 
@@ -64,6 +64,25 @@ UnicodeEscapeSequence ::
 
 Hex4Digits ::
     HexDigit HexDigit HexDigit HexDigit
+    
+HexDigit :: one of
+    0 1 2 3 4 5 6 7 8 9 a b c d e f A B C D E F
+
+SourceCharacter ::
+    any Unicode code point
+
+LineTerminator :: 
+    <LF> 
+    <CR> 
+    <LS>
+    <PS>
+
+LineTerminatorSequence :: 
+    <LF>
+    <CR>[lookahead ≠ <LF>] 
+    <LS>
+    <PS>
+    <CR><LF>
 
 
 
