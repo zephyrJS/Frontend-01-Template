@@ -11,7 +11,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/week06/parse-html/6-constructTree/client.js"
+            "program": "${workspaceFolder}/week06/computed-css/1/client.js"
         }
     ]
 }
